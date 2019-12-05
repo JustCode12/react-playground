@@ -6,6 +6,7 @@ import Result from './Result.js';
 import { CalculationContext } from './CalculationProvider';
 
 configure({ adapter: new Adapter() })
+
 //mock context provider
 const TestProvider = props => {
   const result = 5;
@@ -24,11 +25,11 @@ describe('Result component test', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
-  it('should have ', () => {
+  it('should be one result component', () => {
     const wrapper = mount(<TestProvider><Result /></TestProvider>);
     expect(wrapper.find(Result).length).toBe(1);
   })
-  it('should have ', () => {
+  it('should have correct result displayed', () => {
     const wrapper = mount(<TestProvider><Result /></TestProvider>);
     expect(wrapper.html()).toEqual('<div><span>Result: </span>5</div>');
   })
