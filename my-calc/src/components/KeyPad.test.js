@@ -31,4 +31,11 @@ const TestProvider = props => {
         const wrapper = mount(<TestProvider><KeyPad /></TestProvider>);
         expect(wrapper.find('button').length).toBe(20);
       })
+    it('should update expression', ()=>{
+      const wrapper = mount(<TestProvider><KeyPad /></TestProvider>);
+      //const expression = '2+';
+      expect(wrapper.find('button[name="4"]').length).toBe(1);
+      wrapper.find('button[name="4"]').simulate('click');
+      expect(wrapper.contains(<strong>4</strong>)).toEqual(true);
+    })
   });

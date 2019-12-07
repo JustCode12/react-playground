@@ -17,7 +17,7 @@ const  KeyPad = () => {
         }
     }
     return (
-    <div><span>Data: </span>{expression}
+    <div><span>Data: </span><strong>{expression}</strong>
       <div>
                 <button name="(" onClick={onClick}>(</button>
                 <button name="CE">CE</button>
