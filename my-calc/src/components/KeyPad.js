@@ -20,9 +20,9 @@ const  KeyPad = () => {
     <div><span>Data: </span>{expression}
       <div>
                 <button name="(" onClick={onClick}>(</button>
-                <button name="CE" onClick={onClick}>CE</button>
+                <button name="CE">CE</button>
                 <button name=")" onClick={onClick}>)</button>
-                <button name="C" onClick={onClick}>C</button><br/>
+                <button name="C">C</button><br/>
 
 
                 <button name="1" onClick={onClick}>1</button>
