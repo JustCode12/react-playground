@@ -14,8 +14,9 @@ const TestProvider = props => {
         value={{ result }}>
         {props.children}
       </CalculationContext.Provider>
-    )
-  }
+    )}
+   
+
   describe('KeyPad component test', () => {
     it('should match the snapshot', () => {
       const wrapper = shallow(
@@ -31,11 +32,20 @@ const TestProvider = props => {
         const wrapper = mount(<TestProvider><KeyPad /></TestProvider>);
         expect(wrapper.find('button').length).toBe(20);
       })
-    it('should update expression', ()=>{
+    it('should start the expression displayed', ()=>{
       const wrapper = mount(<TestProvider><KeyPad /></TestProvider>);
-      //const expression = '2+';
       expect(wrapper.find('button[name="4"]').length).toBe(1);
       wrapper.find('button[name="4"]').simulate('click');
       expect(wrapper.contains(<strong>4</strong>)).toEqual(true);
+    })
+    it('should update the expression displayed', ()=>{
+      const wrapper = mount(<TestProvider><KeyPad /></TestProvider>);  
+      expect(wrapper.find('strong').length).toBe(1);
+      expect(wrapper.find('strong').text()).toEqual('');
+      expect(wrapper.find('button[name="4"]').length).toBe(1);
+      wrapper.find('button[name="4"]').simulate('click');
+      expect(wrapper.contains(<strong>4</strong>)).toEqual(true);
+      wrapper.find('button[name="+"]').simulate('click');
+      expect(wrapper.contains(<strong>4+</strong>)).toEqual(true);
     })
   });
