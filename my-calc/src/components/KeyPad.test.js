@@ -18,6 +18,7 @@ const TestProvider = props => {
    
 
   describe('KeyPad component test', () => {
+    
     it('should match the snapshot', () => {
       const wrapper = shallow(
         <TestProvider><KeyPad /></TestProvider>
@@ -47,5 +48,19 @@ const TestProvider = props => {
       expect(wrapper.contains(<strong>4</strong>)).toEqual(true);
       wrapper.find('button[name="+"]').simulate('click');
       expect(wrapper.contains(<strong>4+</strong>)).toEqual(true);
+    })
+
+    it('should clear expression when C is clicked', ()=>{
+      const wrapper = mount(<TestProvider><KeyPad /></TestProvider>);  
+      expect(wrapper.find('strong').length).toBe(1);
+      expect(wrapper.find('strong').text()).toEqual('');
+      expect(wrapper.find('button[name="C"]').length).toBe(1);
+
+      expect(wrapper.find('button[name="4"]').length).toBe(1);
+      wrapper.find('button[name="4"]').simulate('click');
+      expect(wrapper.contains(<strong>4</strong>)).toEqual(true);
+
+      wrapper.find('button[name="C"]').simulate('click');
+      expect(wrapper.find('strong').text()).toEqual('');
     })
   });
